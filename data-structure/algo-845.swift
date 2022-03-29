@@ -1,3 +1,6 @@
+// Q2. スタック (2)
+// https://algo-method.com/tasks/845
+
 final class Node {
     let value: String
     var previous: Node? = nil
