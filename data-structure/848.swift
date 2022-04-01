@@ -1,4 +1,4 @@
-// Q5. ブロックつなぎ
+// Q5. 列車つなぎ（改題後）
 // https://algo-method.com/tasks/848
 
 // MARK: - DataStructure
@@ -20,12 +20,10 @@ class Block {
             forward == nil,
             other.back == nil
         else {
-            print("Error")
             return
         }
         forward = other
         other.back = self
-        print("Yes")
     }
     
     // ブロックを分離して前後をつなげる
@@ -38,7 +36,6 @@ class Block {
 }
 
 // MARK: - Input
-
 var container: [Block] = []
 
 func inputIntTuple() -> (Int, Int) {
@@ -64,7 +61,6 @@ func paraseOperation() -> Operation {
 }
 
 // MARK: - Execute
-
 let (N, Q) = inputIntTuple()
 
 container.append(contentsOf: (0..<N).map(Block.init))
@@ -77,3 +73,22 @@ for _ in (0..<Q) {
         r.contract()
     }
 }
+
+// 車両番号0と連結されているものを抽出
+var result = 1
+let zeroBlock = container[0]
+
+// 前方向
+var car: Block? = zeroBlock.forward
+while car != nil {
+    result += 1
+    car = car?.forward
+}
+
+// 後ろ方向
+car = zeroBlock.back
+while car != nil {
+    result += 1
+    car = car?.back
+}
+print(result)
