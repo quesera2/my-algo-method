@@ -16,3 +16,11 @@ for a in A {
 }
 
 print(result)
+
+// MARK: - 別解
+
+let _ = readLine()
+let result = Dictionary(readLine()!.split(separator: " ").map { (Int($0)!, 1) },
+                        uniquingKeysWith: +)
+    .reduce(into: 0) { $0 += $1.1 - 1 }
+print(result)
