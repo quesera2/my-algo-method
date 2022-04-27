@@ -16,7 +16,6 @@ struct Stack<T> {
 }
 
 var stack = Stack<Int>()
-var result: [Int] = []
 
 for (index, s) in S.enumerated() {    
     if s == "(" {
